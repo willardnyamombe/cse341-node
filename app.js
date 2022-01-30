@@ -45,7 +45,7 @@ const options = {
 };
 
 const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cse341cluster-3dwlw.mongodb.net/shop?retryWrites=true&w=majority";
- 
+const PORT = process.env.PORT || 3000;
 mongoose
   .connect(
     MONGODB_URL, options
@@ -64,7 +64,7 @@ mongoose
         user.save();
       }
     });
-    app.listen(3000);
+    app.listen(PORT);
   })
   .catch(err => {
     console.log(err);
