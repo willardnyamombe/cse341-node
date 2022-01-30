@@ -18,7 +18,7 @@ app.set('views', 'views');
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cse341cluster-3dwlw.mongodb.net/shop?retryWrites=true&w=majority";
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
