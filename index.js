@@ -6,7 +6,10 @@ const mongoose = require('mongoose');
 
 const errorController = require('./controllers/error');
 const User = require('./models/user');
-
+const corsOptions = {
+  origin: "https://cellullar-store.herokuapp.com/",
+  optionsSuccessStatus: 200
+};
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -14,6 +17,8 @@ app.set('views', 'views');
 
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cse341cluster-3dwlw.mongodb.net/shop?retryWrites=true&w=majority";
+const PORT = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -34,18 +39,14 @@ app.use(errorController.get404);
 
 //const cors = require('cors') // Place this with other requires (like 'path' and 'express')
 
-const corsOptions = {
-    origin: "https://cellullar-store.herokuapp.com/",
-    optionsSuccessStatus: 200
-};
+
 app.use(cors(corsOptions));
 
 const options = {
     family: 4
 };
 
-const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cse341cluster-3dwlw.mongodb.net/shop?retryWrites=true&w=majority";
-const PORT = process.env.PORT || 3000;
+
 mongoose
   .connect(
     MONGODB_URL, options
