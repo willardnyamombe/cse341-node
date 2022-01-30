@@ -1,12 +1,14 @@
 {
-  "name": "nodejs-complete-guide",
-  "version": "1.0.0",
-  "description": "Complete Node.js Guide",
-  "main": "app.js",
+  "name": "node-js-getting-started",
+  "version": "0.3.0",
+  "description": "A sample Node.js app using Express 4",
+  "engines": {
+    "node": "12.x"
+  },
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon app.js",
-    "start-server": "node app.js"
+    "start": "nodemon index.js",
+    "test": "node test.js"
   },
   "author": "Maximilian Schwarzmüller",
   "license": "ISC",
