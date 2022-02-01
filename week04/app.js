@@ -41,10 +41,11 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 const options = {
-  family: 4
+  family: 4,
+  useNewUrlParser: true
 };
 
-const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cse341cluster-3dwlw.mongodb.net/shop?retryWrites=true&w=majority";
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop?retryWrites=true&w=majority";
 
 mongoose
   .connect(
