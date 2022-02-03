@@ -1,5 +1,5 @@
 const path = require('path');
-const cors = require('cors'); // Place this with other requires (like 'path' and 'express')
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -10,22 +10,18 @@ const csrf = require('csurf');
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 
-// const MONGODB_URI =
-//   'mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop';
-// const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop?retryWrites=true&w=majority";
-const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop";
+const MONGODB_URI =
+  'mongodb+srv://maximilian:9u4biljMQc4jjqbe@cluster0-ntrwp.mongodb.net/shop';
 
 const app = express();
 const store = new MongoDBStore({
-  uri: MONGODB_URL,
+  uri: MONGODB_URI,
   collection: 'sessions'
 });
 const csrfProtection = csrf();
 
 app.set('view engine', 'ejs');
 app.set('views', 'views');
-
-const PORT = process.env.PORT || 3000
 
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
@@ -67,26 +63,10 @@ app.use(authRoutes);
 
 app.use(errorController.get404);
 
-//  hey work
-const corsOptions = {
-  origin: "https://cellullar-store.herokuapp.com/",
-  optionsSuccessStatus: 200
-};
-app.use(cors(corsOptions));
-
-const options = {
-  family: 4,
-  useNewUrlParser: true
-};
-
-
-
 mongoose
-  .connect(
-    MONGODB_URL, options
-  )
+  .connect(MONGODB_URI)
   .then(result => {
-    app.listen(PORT);
+    app.listen(3000);
   })
   .catch(err => {
     console.log(err);
