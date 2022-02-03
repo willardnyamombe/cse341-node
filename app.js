@@ -77,18 +77,6 @@ mongoose
     MONGODB_URL, options
   )
   .then(result => {
-    // User.findOne().then(user => {
-    //   if (!user) {
-    //     const user = new User({
-    //       name: 'Will',
-    //       email: 'will@test.com',
-    //       cart: {
-    //         items: []
-    //       }
-    //     });
-    //     user.save();
-    //   }
-    // });
     app.listen(PORT);
   })
   .catch(err => {
