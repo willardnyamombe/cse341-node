@@ -13,8 +13,8 @@ const User = require('./models/user');
 //   'mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop';
 // const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop?retryWrites=true&w=majority";
 const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop";
-const app = express();
 
+const app = express();
 const store = new MongoDBStore({
   uri: MONGODB_URL,
   collection: 'sessions'
@@ -77,18 +77,18 @@ mongoose
     MONGODB_URL, options
   )
   .then(result => {
-    User.findOne().then(user => {
-      if (!user) {
-        const user = new User({
-          name: 'Will',
-          email: 'will@test.com',
-          cart: {
-            items: []
-          }
-        });
-        user.save();
-      }
-    });
+    // User.findOne().then(user => {
+    //   if (!user) {
+    //     const user = new User({
+    //       name: 'Will',
+    //       email: 'will@test.com',
+    //       cart: {
+    //         items: []
+    //       }
+    //     });
+    //     user.save();
+    //   }
+    // });
     app.listen(PORT);
   })
   .catch(err => {
