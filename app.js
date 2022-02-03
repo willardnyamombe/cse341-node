@@ -9,13 +9,14 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 
-const MONGODB_URI =
-  'mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop';
+// const MONGODB_URI =
+//   'mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop';
+// const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop?retryWrites=true&w=majority";
+const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop";
 const app = express();
 
-const app = express();
 const store = new MongoDBStore({
-  uri: MONGODB_URI,
+  uri: MONGODB_URL,
   collection: 'sessions'
 });
 
@@ -23,6 +24,7 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 
 const PORT = process.env.PORT || 3000
+
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const authRoutes = require('./routes/auth');
@@ -68,11 +70,11 @@ const options = {
   useNewUrlParser: true
 };
 
-// const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop?retryWrites=true&w=majority";
+
 
 mongoose
   .connect(
-    MONGODB_URI, options
+    MONGODB_URL, options
   )
   .then(result => {
     User.findOne().then(user => {
