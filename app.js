@@ -11,8 +11,7 @@ const flash = require('connect-flash');
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 
-const MONGODB_URI =
-  'mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop';
+const MONGODB_URI = process.env.MONGODB_URL ||'mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop';
 // const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop?retryWrites=true&w=majority";
 // const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop";
 
@@ -26,7 +25,7 @@ const csrfProtection = csrf();
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-// const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3000
 
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
@@ -88,7 +87,7 @@ mongoose
     MONGODB_URI, options
   )
   .then(result => {
-    app.listen(3000);
+    app.listen(PORT);
   })
   .catch(err => {
     console.log(err);
