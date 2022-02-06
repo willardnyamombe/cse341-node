@@ -85,7 +85,7 @@ const options = {
 
 mongoose
   .connect(
-    MONGODB_URL, options
+    MONGODB_URI, options
   )
   .then(result => {
     app.listen(3000);
