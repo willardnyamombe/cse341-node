@@ -12,8 +12,6 @@ const errorController = require('./controllers/error');
 const User = require('./models/user');
 
 const MONGODB_URL = process.env.MONGODB_URL
-// const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop?retryWrites=true&w=majority";
-// const MONGODB_URL = process.env.MONGODB_URL || "mongodb+srv://willardnyamombe:Nthando-36@cluster0.rmdzj.mongodb.net/shop";
 
 const app = express();
 const store = new MongoDBStore({
